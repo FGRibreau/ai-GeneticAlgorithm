@@ -1,10 +1,6 @@
 /*
  *  chessboard.h
  *  HillClimbing
- *
- *  Created by Francois-Guillaume Ribreau on 21/01/11.
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
- *
  */
 
 #ifndef _CHESSBOARD_H
@@ -16,7 +12,7 @@
 
 typedef struct Chessboard* pChessboard;
 
-/* Echequier */
+/* Echiquier */
 struct Chessboard{
 	int**	queens;
 	int		size;
@@ -64,7 +60,7 @@ pChessboard Chessboard_clone(pChessboard pBoardToClone);
 void Chessboard_moveQueenTo(pChessboard pBoard, int col, int line);
 
 //
-pChessboard Chessboard_getNextState(pChessboard pBoardCurrentState, int k, int T);
+pChessboard Chessboard_getNextState(pChessboard pBoardCurrentState, int T);
 void Stack_showLowerValues(pStack stack);
 
 pMatrix Matrix_constructor(pChessboard pBoard);

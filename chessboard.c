@@ -2,14 +2,13 @@
  *  chessboard.c
  *  HillClimbing
  *
- *  Created by Francois-Guillaume Ribreau on 21/01/11.
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
 
 #include "chessboard.h"
 
 
+//Construit un échiquier de taille size aléatoirement
 pChessboard Chessboard_constructor(int size){
 	pChessboard pBoard = _malloc(sizeof(Chessboard));
 	
@@ -39,7 +38,7 @@ pChessboard Chessboard_constructor(int size){
 	return pBoard;
 }
 
-//Vide l'echequier
+//Vide l'échiquier
 void Chessboard_empty(pChessboard pBoard){
 	for(int y = 0; y < pBoard->size; y++){
 		for(int x = 0; x < pBoard->size; x++){
@@ -93,7 +92,6 @@ int Chessboard_getH(pChessboard pBoard){
 
 	//Parcourir les reines de haut en bas, de gauche à droite
 	//En diagonale vers le haut, en diag vers le bas
-	
 	for(col = 0; col < pBoard->size; col++){
 	for(line = 0; line < pBoard->size; line++){
 		
@@ -118,8 +116,6 @@ int Chessboard_getH(pChessboard pBoard){
 			h += nbQueen > 1 ? nbQueen-1 : 0;
 			nbQueen = 0;
 			
-			//printf("\n");
-			
 			//Vers la dialognale basse
 			while(dwCol < pBoard->size && dwLine < pBoard->size){
 				
@@ -140,18 +136,20 @@ int Chessboard_getH(pChessboard pBoard){
 	return h;
 }
 
-
+//Affiche l'échiquier
 void Chessboard_show(pChessboard pBoard){	
 	__showMatrix(pBoard->queens, pBoard->size);
 }
 
+//Helper
 void __showMatrix(int** mat, int size){
 	for(int y = 0; y < size; y++){
+		printf("|");
 		for(int x = 0; x < size; x++){
-			printf("\t%i", mat[y][x]);
+			printf(" %c ", mat[y][x] == 0 ? '.':'X');
 		}
 		
-		printf("\n");
+		printf("|\n");
 	}
 }
 
@@ -169,14 +167,12 @@ void Chessboard_setQueens(pChessboard pBoard, int* values){
 }
 
 //Prendre le dernier état du stack
-pChessboard Chessboard_getNextState(pChessboard pBoardCurrentState, int k, int T){
-	
-	printf("_____________________________________________\n");
-	
+pChessboard Chessboard_getNextState(pChessboard pBoardCurrentState, int T){
+
 	pChessboard pBoard = Chessboard_clone(pBoardCurrentState);
 	
 	int EXi = Chessboard_getH(pBoardCurrentState);
-
+	
 	//Choisir une reine aléatoire
 	int queenCol = _rand(0, pBoardCurrentState->size-1);
 	
@@ -192,44 +188,22 @@ pChessboard Chessboard_getNextState(pChessboard pBoardCurrentState, int k, int T
 	int deltaEij = EXj - EXi;
 	
 	if(deltaEij <= 0){
-		return pBoard;
-	} else {
-		printf("Choix de P entre 0 et 1: %d\n", _rand(0,1));
 		
-		if(_rand(0,1) < exp(-deltaEij/T)){
-			
+	} else {
+		
+		if(__rand(0,1,3) < exp(-deltaEij/T)){
 		} else {
 			//Revert le dernier mouvement
 			Chessboard_moveQueenTo(pBoard, queenCol, queenOldLine);
 		}
-		
-		return pBoard;
 	}
 	
 
-	
 	return pBoard;
 }
 
-//Retourne un QueenState pour une colonne donnée
 
-//Affiche le contenu du stack
-void Stack_showLowerValues(pStack stack){
-	if(stack == NULL)
-		return;
-	
-	printf("\nPlus bas H:\t");
-
-	while(stack){
-		printf("%i [%i:%i]\t", ((int*)stack->data)[0], ((int*)stack->data)[1], ((int*)stack->data)[2]);
-		stack = stack->prev;
-	}
-	
-	printf("\n");
-
-}
-
-//Clone la matrice
+//Clone l'échiquier
 pChessboard Chessboard_clone(pChessboard pBoardToClone){
 
 	pChessboard pBoard = _malloc(sizeof(Chessboard));
@@ -273,6 +247,7 @@ void Chessboard_moveQueenTo(pChessboard pBoard, int col, int line){
 	pBoard->h = -1;
 }
 
+//Retourne la ligne où se trouve la reine dans la colonne col
 int Chessboard_getQueenPos(pChessboard pBoard, int col){
 	
 	for(int line = 0;line < pBoard->size; line++){ 
@@ -285,7 +260,7 @@ int Chessboard_getQueenPos(pChessboard pBoard, int col){
 }
 
 
-//Test si 2 échéqués son identique
+//Test si 2 échiquiers son identique
 bool Chessboard_equals(pChessboard pBoardB, pChessboard pBoardA){
 
 	if(pBoardA == pBoardB){
@@ -304,6 +279,7 @@ bool Chessboard_equals(pChessboard pBoardB, pChessboard pBoardA){
 	return true;
 }
 
+//Libère un échiquier de la mémoire
 void Chessboard_free(pChessboard pBoard){
 	//Désalloc de la matrice
 	for(int line = 0;line < pBoard->size; line++){

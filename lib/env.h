@@ -14,5 +14,6 @@ void _free(void* t);
 
 void _printMalloc();
 int _rand(int min, int max);
+double __rand(int min, int max, int precision);
 #endif
 

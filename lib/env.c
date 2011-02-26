@@ -33,10 +33,14 @@ void _free(void* t){
 }
 
 int _rand(int min, int max){
-	return (min+(int)(rand()%(1+max-min)));
+	
+	return (min+(rand()%(1+max-min)));
 }
 
-//Ajouter srand ( time(NULL) );
+
+double __rand(int min, int max, int precision){
+	return (float)(min + rand() % (max-min)) + (float)(rand() % (10*precision))/(float)(10*(float)precision);
+}
 
 
 /*

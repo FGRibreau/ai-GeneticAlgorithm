@@ -5,57 +5,47 @@
 #include "chessboard.h"
 #include "testChessboard.h"
 
-int main (int argc, const char * argv[]) {
-	srand ( time(NULL) );
-
-	double T = 1000;
-	double Tf = 100;
-	int	K = 40;
-	int	Ki = 0;
-	double	alpha = 0.2;//Entre [0,2]
+int runSimulatedAnnealing(double boardSize, double T, double Tf, int nbIteration, double alpha){
+	pChessboard newMat = Chessboard_constructor(boardSize), lastMat = NULL;
 	
-
-	//Test unitaire
-	testChessboard();
+	int	k = 0
+	,	h = 1;
 	
-	//Programme
-	pChessboard lastMat = Chessboard_constructor(6),
-				newMat = NULL;
-	
-
-	Chessboard_show(lastMat);
-	printf("H: %i\n", Chessboard_getH(lastMat));
-	
-	newMat = Chessboard_getNextState(lastMat, Ki, T);
-	
-	int oldH = 0;
-
-	//Trouver les états suivants
-	//while((hL = Chessboard_getH(newMat)) <= (hR = Chessboard_getH(lastMat)) && plateau < plateauMax){
-	while(T > Tf){
+	while(h != 0 && T > Tf){//Quand H == 0, T = tf
 		
-		Ki++;
+		lastMat = newMat;
+		newMat = Chessboard_getNextState(lastMat, T);
+		
+		h = Chessboard_getH(newMat);
 		
 		Chessboard_free(lastMat);
 		
-		
-		oldH = Chessboard_getH(newMat);
-		printf("T: %i\tH %i\n", oldH, T, Ki);
-		
-		lastMat = newMat;
-		newMat = Chessboard_getNextState(lastMat, Ki, T);
-		
-		
-		if(Ki == K){
-			Ki = 0;
+		if(k == nbIteration){
+			k = 0;
 			T *= alpha;
+		} else {
+			k++;
 		}
 	}
 	
-	Chessboard_show(newMat);
+	h = Chessboard_getH(newMat);
 	
+	Chessboard_show(newMat);
 	Chessboard_free(newMat);
 	
+	return h;
+}
+
+int main (int argc, const char * argv[]) {
+	srand ( time(NULL) );
+	
+	int h = 0;
+	for(int i = 0, iM = 10; i < iM; i++){
+		h = runSimulatedAnnealing(8, 100, 1, 8, 0.9995);
+		
+		printf("H: %i\n\n", h);
+	}
+
 	
     return 0;
 }

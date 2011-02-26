@@ -1,10 +1,6 @@
 /*
  *  testChessboard.h
  *  HillClimbing
- *
- *  Created by Francois-Guillaume Ribreau on 24/01/11.
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
- *
  */
 
 
