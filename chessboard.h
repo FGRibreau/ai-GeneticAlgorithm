@@ -8,7 +8,7 @@
 
 #include "lib/env.h"
 #include "lib/Stack.h"
-#include "queen.h"
+
 
 typedef struct Chessboard* pChessboard;
 
@@ -59,7 +59,6 @@ pChessboard Chessboard_clone(pChessboard pBoardToClone);
 //Déplacer la reine présente dans la colonne à la position indiquée
 void Chessboard_moveQueenTo(pChessboard pBoard, int col, int line);
 
-//
 pChessboard Chessboard_getNextState(pChessboard pBoardCurrentState, int T);
 void Stack_showLowerValues(pStack stack);
 
@@ -68,6 +67,26 @@ void Matrix_destructor(pMatrix hMatrix);
 
 //Retourne un nouveau H générée à partir d'une nouvelle position
 int* Matrix_getNewH(pMatrix hMat);
+
+//Sequences
+typedef struct Sequence* pSequence;
+
+typedef struct Sequence{
+	int* values;
+	int size;
+} Sequence;
+
+
+void Sequence_show(pSequence seq);
+
+pSequence Chessboard_toSequence(pChessboard pBoard);
+void Chessboard_setFromSequence(pChessboard pBoard, pSequence seq);
+
+//Réalise un cross-over entre 2 séquences
+void Sequence_crossover(pSequence p1, pSequence p2, int pos);
+
+//Réalise une mutation
+int Sequence_mutate(pSequence p, int doMutate, int pos);
 
 //Tools
 void __showMatrix(int** mat, int size);

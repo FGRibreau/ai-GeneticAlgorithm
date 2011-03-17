@@ -38,6 +38,7 @@ pChessboard Chessboard_constructor(int size){
 	return pBoard;
 }
 
+
 //Vide l'échiquier
 void Chessboard_empty(pChessboard pBoard){
 	for(int y = 0; y < pBoard->size; y++){
@@ -133,6 +134,7 @@ int Chessboard_getH(pChessboard pBoard){
 	
 	}}
 	
+	pBoard->h = h;
 	return h;
 }
 
@@ -288,4 +290,72 @@ void Chessboard_free(pChessboard pBoard){
 	
 	_free(pBoard->queens);
 	_free(pBoard);
+}
+
+
+//Séquences
+
+//Returne une séquence à partir d'un chessboard
+pSequence Chessboard_toSequence(pChessboard pBoard){
+	//Todo: cette partie devrait être dans sequence.c
+	pSequence seq = _malloc(sizeof(Sequence));
+	seq->size = pBoard->size;
+	seq->values = _malloc(seq->size * sizeof(int));
+	
+	for(int i = 0, iM = seq->size; i < iM; i++){
+		seq->values[i] = Chessboard_getQueenPos(pBoard, i);
+	}
+	
+	return seq;
+}
+
+//Returne un chessboard à partire d'une séquence
+void Chessboard_setFromSequence(pChessboard pBoard, pSequence seq){
+	pBoard->size = seq->size;
+	pBoard->h = 0;
+	
+	int line, col
+	,	m = seq->size;
+	
+	//[line][col] 
+	
+	for(line = 0; line < m; line++){
+		for(col = 0; col < m; col++){
+			pBoard->queens[line][col] = seq->values[col] == line ? 1 : 0;
+		}
+	}
+}
+
+void Sequence_show(pSequence seq){
+	printf("[ ");
+	for(int i = 0, iM = seq->size; i < iM; i++){
+		printf(" %d ", seq->values[i]);
+	}
+	printf(" ]");
+}
+
+//Réalise un cross-over entre 2 séquences
+void Sequence_crossover(pSequence p1, pSequence p2, int pos){
+	if(pos == 0 || pos == p1->size){
+		return;
+	}
+
+	int tmp = 0;
+	for(int i = pos, iM = p1->size; i < iM; i++){
+		tmp = p1->values[i];
+		p1->values[i] = p2->values[i];
+		p2->values[i] = tmp;
+	}
+}
+
+//Réalise une mutation
+int Sequence_mutate(pSequence p, int doMutate, int pos){
+	if(doMutate == 0){
+		return -1;
+	}
+	
+	int m = _rand(0, p->size-1);
+	p->values[pos] = m;
+	
+	return m;
 }
