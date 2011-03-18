@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <math.h>
 #include "lib/env.h"
 #include "lib/Stack.h"
@@ -18,6 +19,7 @@
 							--FG 18 Mars 2011.
  */
 int main (int argc, const char * argv[]) {
+	
 	srand ( time(NULL) );
 	
 	pChessboard population[NBPOPULATION];
@@ -120,15 +122,53 @@ int main (int argc, const char * argv[]) {
 	
 	//Transformer les séquences en chessboard -> population[i]
 	i = 0;
+	int ii = 0;
+	int minH = maxHFitness;
 	while(i < NBPOPULATION){
-
+		
+		int h = Chessboard_getH(population[i]);
+		if(h < minH){
+			minH = h;
+			ii = i;
+		}
+		
 		//Recaculer le H de chaque chessboard si H == 0 sortir
-		printf("H(%d) = %d\n", i, Chessboard_getH(population[i]));
-		Chessboard_show(population[i]);
+		//printf("H(%d) = %d\n", i, h);
+		
 		
 		i++;
 	}
+
+	pSequence final = Chessboard_toSequence(population[ii]);
 	
+	//Affichage du résultat via canvas HTML
+	
+	/*
+		Le code ci-dessous est extrêmement sale, désolé :)
+	*/
+	char buf[1024];
+	char the_path[255];
+	getcwd(the_path, 255);
+
+	char* ff = substr(the_path, 0,strlen(the_path)-strlen("build/Debug/"));
+
+	snprintf(buf, sizeof(buf), "Open the file (in your browser) file:///%s/viewCanvas.html#", ff);
+	
+	char values[final->size*2 + 1];
+	int ss = 0;
+	
+	for(int y =  0, yM = final->size*2; y < yM; y += 2){
+		values[y] = (char)final->values[ss]+48;
+		values[y+1] = ',';
+		ss++;
+	}
+	values[final->size*2] = '\0';
+	
+	char execPath[1024];
+	
+	strcat(execPath, buf);
+	strcat(execPath, values);
+	printf("%s", execPath);
 	
     return 0;
 }

@@ -43,6 +43,15 @@ double __rand(int min, int max, int precision){
 }
 
 
+char *substr(char *src,int pos,int len) { 
+	char *dest=NULL;                        
+	if (len>0) {                            
+		dest = (char *) malloc(len+1);        
+		strncat(dest,src+pos,len);            
+	}                                       
+	return dest;                            
+}     
+
 /*
  mémo:
  

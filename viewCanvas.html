@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Canvas</title>
+	
+</head>
+
+<body>
+
+<script type="text/javascript">
+function drawLine(contextO, startx, starty, endx, endy) {
+  contextO.beginPath();
+  contextO.moveTo(startx, starty);
+  contextO.lineTo(endx, endy);
+  contextO.closePath();
+  contextO.stroke();
+}
+
+function drawCanvas(){
+	var val = document.location.hash.substr(1).split(',');
+	val.pop();
+
+	var chessboard_size = val.length
+	,	mul = 20
+	,	sz = mul * chessboard_size;
+
+	console.log(sz);
+	var canvas=document.getElementById('myCanvas');
+	/*canvas.style.width = (sz+1)+'px';
+	canvas.style.height = (sz+1)+'px';
+	*/
+	var ctx = canvas.getContext('2d');
+	
+	ctx.fillStyle='#FFFFFF';
+	ctx.fillRect(0,0, sz, sz);
+
+	//Dessiner les lignes
+	ctx.strokeStyle='#DDD';
+
+	for(var x = 0; x < chessboard_size; x++){
+		
+		drawLine(ctx, 0, x*mul, sz, x*mul);
+		drawLine(ctx, x*mul, 0, x*mul, sz);
+		
+		for(var y = 0; y < chessboard_size; y++){
+
+			if(val[x] == y){
+				ctx.fillStyle='#000000';
+				ctx.beginPath();
+				ctx.arc(x*mul + mul/2, y*mul - mul/2, mul/3, 0, Math.PI*2, false);
+				ctx.closePath();
+				ctx.fill();
+			}
+		}
+	}
+
+	
+//Dessiner les reines
+}
+</script>
+<canvas id="myCanvas">your browser does 
+not support the canvas tag </canvas>
+<script type="text/javascript" charset="utf-8">
+	drawCanvas();
+</script>
+</body>
+</html>
