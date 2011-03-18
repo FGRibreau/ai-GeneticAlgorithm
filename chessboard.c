@@ -134,7 +134,6 @@ int Chessboard_getH(pChessboard pBoard){
 	
 	}}
 	
-	pBoard->h = h;
 	return h;
 }
 

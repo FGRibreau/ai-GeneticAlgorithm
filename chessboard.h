@@ -16,7 +16,7 @@ typedef struct Chessboard* pChessboard;
 struct Chessboard{
 	int**	queens;
 	int		size;
-	int		h;
+	float		h;
 } Chessboard;
 
 
