@@ -1,0 +1,222 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C5858CB51312BCD00017E468 /* chessboard.c in Sources */ = {isa = PBXBuildFile; fileRef = C5858CA91312BCD00017E468 /* chessboard.c */; };
+		C5858CB61312BCD00017E468 /* env.c in Sources */ = {isa = PBXBuildFile; fileRef = C5858CAC1312BCD00017E468 /* env.c */; };
+		C5858CB71312BCD00017E468 /* Stack.c in Sources */ = {isa = PBXBuildFile; fileRef = C5858CAE1312BCD00017E468 /* Stack.c */; };
+		C5858CB91312BCD00017E468 /* testChessboard.c in Sources */ = {isa = PBXBuildFile; fileRef = C5858CB21312BCD00017E468 /* testChessboard.c */; };
+		C5858CC91312C0610017E468 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C5858CC81312C0610017E468 /* main.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76FAF0486AB0100D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C5495BCD132E7B0F00D6D64A /* ai-SimulatedAnnealing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ai-SimulatedAnnealing"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5858CA91312BCD00017E468 /* chessboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = chessboard.c; sourceTree = "<group>"; };
+		C5858CAA1312BCD00017E468 /* chessboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chessboard.h; sourceTree = "<group>"; };
+		C5858CAC1312BCD00017E468 /* env.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = env.c; sourceTree = "<group>"; };
+		C5858CAD1312BCD00017E468 /* env.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = env.h; sourceTree = "<group>"; };
+		C5858CAE1312BCD00017E468 /* Stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Stack.c; sourceTree = "<group>"; };
+		C5858CAF1312BCD00017E468 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		C5858CB21312BCD00017E468 /* testChessboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testChessboard.c; sourceTree = "<group>"; };
+		C5858CB31312BCD00017E468 /* testChessboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testChessboard.h; sourceTree = "<group>"; };
+		C5858CC81312C0610017E468 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76FAD0486AB0100D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* ai-SimulatedAnnealing */ = {
+			isa = PBXGroup;
+			children = (
+				C5D059051321236F00052BBB /* test */,
+				C5858CC81312C0610017E468 /* main.c */,
+				C5858CA91312BCD00017E468 /* chessboard.c */,
+				C5858CAA1312BCD00017E468 /* chessboard.h */,
+				C5858CAB1312BCD00017E468 /* lib */,
+				C5495BCD132E7B0F00D6D64A /* ai-SimulatedAnnealing */,
+			);
+			name = "ai-SimulatedAnnealing";
+			sourceTree = "<group>";
+		};
+		C5858CAB1312BCD00017E468 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C5858CAC1312BCD00017E468 /* env.c */,
+				C5858CAD1312BCD00017E468 /* env.h */,
+				C5858CAE1312BCD00017E468 /* Stack.c */,
+				C5858CAF1312BCD00017E468 /* Stack.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		C5D059051321236F00052BBB /* test */ = {
+			isa = PBXGroup;
+			children = (
+				C5858CB21312BCD00017E468 /* testChessboard.c */,
+				C5858CB31312BCD00017E468 /* testChessboard.h */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76FA90486AB0100D96B5E /* ai-GeneticAlgorithm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB928508733DD80010E9CD /* Build configuration list for PBXNativeTarget "ai-GeneticAlgorithm" */;
+			buildPhases = (
+				8DD76FAB0486AB0100D96B5E /* Sources */,
+				8DD76FAD0486AB0100D96B5E /* Frameworks */,
+				8DD76FAF0486AB0100D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ai-GeneticAlgorithm";
+			productInstallPath = "$(HOME)/bin";
+			productName = "ai-SimulatedAnnealing";
+			productReference = C5495BCD132E7B0F00D6D64A /* ai-SimulatedAnnealing */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = FGRibreau;
+			};
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "ai-GeneticAlgorithm" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* ai-SimulatedAnnealing */;
+			productRefGroup = 08FB7794FE84155DC02AAC07 /* ai-SimulatedAnnealing */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76FA90486AB0100D96B5E /* ai-GeneticAlgorithm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76FAB0486AB0100D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5858CB51312BCD00017E468 /* chessboard.c in Sources */,
+				C5858CB61312BCD00017E468 /* env.c in Sources */,
+				C5858CB71312BCD00017E468 /* Stack.c in Sources */,
+				C5858CB91312BCD00017E468 /* testChessboard.c in Sources */,
+				C5858CC91312C0610017E468 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB928608733DD80010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "ai-SimulatedAnnealing";
+			};
+			name = Debug;
+		};
+		1DEB928708733DD80010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "ai-SimulatedAnnealing";
+			};
+			name = Release;
+		};
+		1DEB928A08733DD80010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB928B08733DD80010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928508733DD80010E9CD /* Build configuration list for PBXNativeTarget "ai-GeneticAlgorithm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB928608733DD80010E9CD /* Debug */,
+				1DEB928708733DD80010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "ai-GeneticAlgorithm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB928A08733DD80010E9CD /* Debug */,
+				1DEB928B08733DD80010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
